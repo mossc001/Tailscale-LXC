@@ -1,0 +1,43 @@
+Spin up an Ubuntu 18.04 or similar LXC
+
+---------------
+In your LXC console
+---------------
+
+You will probably need to install Curl:
+# apt install curl
+
+Then run:
+
+# curl -fsSL https://tailscale.com/install.sh | sh
+
+---------------
+In your ProxMoss console
+---------------
+
+Modify your LXC conf for TUN:
+# nano /etc/pve/lxc/116.conf
+
+Add this to the bottom of the config file:
+# lxc.cgroup.devices.allow: c 10:200 rwm
+# lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+
+---------------
+In your LXC console
+---------------
+
+In the console of the Tailscale LXC, enter the below:
+
+# echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
+# echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
+# sudo sysctl -p /etc/sysctl.conf
+
+Then expose your LAN as a subnet router (https://tailscale.com/kb/1019/subnets/):
+
+# sudo tailscale up --advertise-routes=192.168.1.0/24
+
+Once running, then authorise it following the onscreen instructions.
+
+When all good, then you need to enable subnet routing via https://login.tailscale.com/admin/machines
+
+Locate your tailscale machine that's listed and click the "dots" and click "Edit route settings", then enable "Subnet routes".
