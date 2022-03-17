@@ -1,5 +1,12 @@
 Create a new CT (LXC) in Proxmox using Ubuntu 18.04 or similar as the base, then start up your container.
 
+For example:
+Host: Ubuntu 18.04 Standard
+Hostname: Tailscale
+Disk Size: 8GB
+Memory: 2GB (for example)
+Network:  192.168.1.25/24 (for example)
+
 ---------------
 Within your LXC Console
 ---------------
