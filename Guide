@@ -1,20 +1,17 @@
-Spin up an Ubuntu 18.04 or similar LXC
+Create a new CT (LXC) in Proxmox using Ubuntu 18.04 or similar as the base, then start up your container.
 
 ---------------
-In your LXC console
+Within your LXC Console
 ---------------
-
 You will probably need to install Curl:
 # apt install curl
 
 Then run:
-
 # curl -fsSL https://tailscale.com/install.sh | sh
 
 ---------------
-In your ProxMoss console
+Within your Proxmox Console
 ---------------
-
 Modify your LXC conf for TUN:
 # nano /etc/pve/lxc/116.conf
 
@@ -23,9 +20,8 @@ Add this to the bottom of the config file:
 # lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
 ---------------
-In your LXC console
+Within your LXC Console
 ---------------
-
 In the console of the Tailscale LXC, enter the below:
 
 # echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
