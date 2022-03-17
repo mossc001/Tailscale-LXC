@@ -1,4 +1,5 @@
 # Tailscale-LXC
+Installing Tailscale in a Proxmox LXC
 
 This is a guide on how to install Tailscale within an LXC which is already behind a physical router such as PfSense.
 
