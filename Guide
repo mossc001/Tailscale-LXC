@@ -19,7 +19,7 @@ Then run:
 ---------------
 Within your Proxmox Console
 ---------------
-Modify your LXC conf for TUN:
+Modify your LXC conf for TUN; change your conf number to your LXC container number, mine is 116 for this example:
 # nano /etc/pve/lxc/116.conf
 
 Add this to the bottom of the config file:
