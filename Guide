@@ -10,6 +10,9 @@ Network:  192.168.1.25/24 (for example)
 ---------------
 Within your LXC Console
 ---------------
+Perform an update first:
+# sudo apt-get update && sudo apt-get upgrade -y
+
 You will probably need to install Curl:
 # apt install curl
 
@@ -34,6 +37,8 @@ In the console of the Tailscale LXC, enter the below:
 # echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
 # echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
 # sudo sysctl -p /etc/sysctl.conf
+
+Reboot your LXC before running the below otherwise you will get an error.
 
 Then expose your LAN as a subnet router (https://tailscale.com/kb/1019/subnets/):
 
