@@ -44,6 +44,10 @@ Then expose your LAN as a subnet router (https://tailscale.com/kb/1019/subnets/)
 
 # sudo tailscale up --advertise-routes=192.168.1.0/24
 
+** If you're running tailscale on a Pi with PiHole as the DNS, then you need to run this command:
+# sudo tailscale up --advertise-routes=192.168.1.0/24 --accept-dns=false
+**
+
 Once running, then authorise it following the onscreen instructions.
 
 When all good, then you need to enable subnet routing via https://login.tailscale.com/admin/machines
