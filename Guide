@@ -26,6 +26,11 @@ Modify your LXC conf for TUN; change your conf number to your LXC container numb
 # nano /etc/pve/lxc/116.conf
 
 Add this to the bottom of the config file:
+For proxmox versions 7 and above:
+# lxc.cgroup2.devices.allow: c 10:200 rwm
+# lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+
+For proxmox versions 6 and below:
 # lxc.cgroup.devices.allow: c 10:200 rwm
 # lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
